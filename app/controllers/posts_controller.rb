@@ -22,18 +22,21 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
-  # privateよりも下のあるとdestroyアクションが見つからなかった
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    post = Post.find(params[:id])
+    post.update!(post_params)
+    redirect_to post
+  end
+
+  # privateよりも下のあるとdestroy,edit,updateアクションが見つからなかった
   private
 
   def post_params
     params.require(:post).permit(:title, :content)
   end
-
-  def edit
-  end
-
-  def update
-  end
-
   
 end
