@@ -16,6 +16,13 @@ class PostsController < ApplicationController
     redirect_to post
   end
 
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy!
+    redirect_to root_path
+  end
+
+  # privateよりも下のあるとdestroyアクションが見つからなかった
   private
 
   def post_params
@@ -28,6 +35,5 @@ class PostsController < ApplicationController
   def update
   end
 
-  def destroy
-  end
+  
 end
